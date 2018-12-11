@@ -15,6 +15,17 @@ public class AB<E> {
         root= null;
     }
     
+    public int size(){
+        return size(root);
+    }
+    
+    private int size(Node<E> node){
+        if(node == null){
+            return 0;
+        }
+        return 1+size(node.getLeft())+size(node.getRight());
+        
+    }
     public boolean isEmpty(){
         return root==null;
     }
@@ -29,7 +40,12 @@ public class AB<E> {
         }else if (node.getData().equals(data)){
             return node;
         }else {
-            
+            Node<E> l= searchNode(data,node.getLeft());
+            if(l!=null){
+                return l;
+            }else {
+                return searchNode(data,node.getRight());
+            }
         }
     }
 }
