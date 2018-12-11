@@ -48,4 +48,19 @@ public class AB<E> {
             }
         }
     }
+    
+    public int contarHojas(){
+        return contarHojas(root);
+    }
+    private int contarHojas(Node<E> node){
+        if(node == null){
+            return 0;
+        }else if(node.getLeft()==null && node.getRight()==null){
+            return 1;
+        }
+        else {
+            return contarHojas(node.getLeft()) + contarHojas(node.getRight());
+        }
+        
+    }
 }
