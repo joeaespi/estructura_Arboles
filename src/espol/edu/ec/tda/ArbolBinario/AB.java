@@ -86,6 +86,46 @@ public class AB<E> {
         }
         return false;
     }
+    
+    public boolean remove(E child){
+        if(child == null && isEmpty()){
+            return false;
+    }else if (root.getData().equals(child)){
+        root= null;
+        return true;
+    }else{
+        Node<E> p =searchParent(child);
+        if(p!=null){
+            if(p.getLeft()!=null&& p.getLeft().getData().equals(child)){
+                p.setLeft(null);
+            }else{
+            p.setRight(null);
+        }
+            return true;
+    }
+    }
+        return false;
+    }
+    
+    private Node<E> searchParent(E data){
+        return searchParent(data, root);
+    }
+    
+    private Node<E> searchParent(E data, Node<E> node){
+        if(node==null){
+            return null;
+        }else if (node.getLeft()!=null&& node.getLeft().getData().equals(data) 
+                ||node.getRight()!=null && node.getRight().getData().equals(data)){
+            return node;
+        }else {
+            Node<E> l= searchParent(data,node.getLeft());
+            if(l!=null){
+                return l;
+            }else {
+                return searchParent(data,node.getRight());
+            }
+        }
+    }
 
     public Node<E> getRoot() {
         return root;
