@@ -63,4 +63,37 @@ public class AB<E> {
         }
         
     }
+    
+    public boolean add(E child, E parent){
+        if(child == null && parent==null){
+            return false;
+        }else if(child != null && parent==null && isEmpty()){
+            this.root = new Node<>(child);
+            return true;
+        }else if (child != null && parent!=null){
+            Node<E>p = searchNode(parent);
+            Node<E> c = searchNode(child);
+            if(p!=null && c==null){
+                c= new Node<>(child);
+                if(p.getLeft()==null){
+                    p.setLeft(c);
+                    return true;
+                }else if (p.getRight()==null){
+                    p.setRight(c);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Node<E> getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node<E> root) {
+        this.root = root;
+    }
+    
+    
 }
