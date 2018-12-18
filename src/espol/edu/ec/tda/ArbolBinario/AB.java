@@ -126,6 +126,19 @@ public class AB<E> {
             }
         }
     }
+    
+    public int height(){
+        return height(root);
+    }
+    
+    private int height(Node<E> p){
+        if(p==null){
+            return 0;
+        }else {
+            return 1+Math.max(height(p.getLeft()), height(p.getRight()));
+        }
+        
+    }
 
     public Node<E> getRoot() {
         return root;
