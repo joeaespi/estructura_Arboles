@@ -158,9 +158,21 @@ public class AB<E> {
     
     private void posOrder(Node<E> p){
         if(p!=null){
-            preOrder(p.getLeft());
-            preOrder(p.getRight());
+            posOrder(p.getLeft());
+            posOrder(p.getRight());
             System.out.print(p.getData());
+        }
+    }
+    
+    public void inOrder(){
+        inOrder(root);
+    }
+    
+    private void inOrder(Node<E> p){
+        if(p!=null){
+            inOrder(p.getLeft());
+            System.out.print(p.getData());
+            inOrder(p.getRight());
         }
     }
 

@@ -19,14 +19,16 @@ public class Arboles {
         AB<String> arbol = new AB<>();
         arbol.add("A", null);
         arbol.add("B", "A");
-        arbol.add("C", "B");
-        arbol.add("D", "C");
-        arbol.add("E", "D");
-        arbol.add("F", "E");
+        arbol.add("C", "A");
+        arbol.add("D", "B");
+        arbol.add("E", "B");
+        arbol.add("F", "C");
         
         arbol.preOrder();
         System.out.print("\n");
         arbol.posOrder();
+        System.out.print("\n");
+        arbol.inOrder();
         System.out.print("\n");
     }
     
