@@ -26,6 +26,8 @@ public class Arboles {
         
         arbol.preOrder();
         System.out.print("\n");
+        arbol.posOrder();
+        System.out.print("\n");
     }
     
 }

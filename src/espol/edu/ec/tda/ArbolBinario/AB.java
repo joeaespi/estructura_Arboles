@@ -152,7 +152,17 @@ public class AB<E> {
         }
     }
     
+    public void posOrder(){
+        posOrder(root);
+    }
     
+    private void posOrder(Node<E> p){
+        if(p!=null){
+            preOrder(p.getLeft());
+            preOrder(p.getRight());
+            System.out.print(p.getData());
+        }
+    }
 
     public Node<E> getRoot() {
         return root;
