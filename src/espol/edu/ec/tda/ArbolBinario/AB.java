@@ -139,6 +139,20 @@ public class AB<E> {
         }
         
     }
+    
+    public void preOrder(){
+        preOrder(root);
+    }
+    
+    private void preOrder(Node<E> p){
+        if(p!=null){
+            System.out.print(p.getData());
+            preOrder(p.getLeft());
+            preOrder(p.getRight());
+        }
+    }
+    
+    
 
     public Node<E> getRoot() {
         return root;
