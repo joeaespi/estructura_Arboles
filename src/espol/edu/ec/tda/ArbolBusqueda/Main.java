@@ -19,11 +19,15 @@ public class Main {
         ar.add(5);
         ar.add(3);
         ar.add(1);
-        ar.inOrder();
+//        ar.inOrder();
+//        System.out.print("\n");
+//        System.out.println(ar.max());
+//        System.out.println(ar.min());
+//        System.out.println(ar.contains(20));
+//        System.out.println(ar.contains(19));
+        ar.inOrder(); 
         System.out.print("\n");
-        System.out.println(ar.max());
-        System.out.println(ar.min());
-        System.out.println(ar.contains(20));
-        System.out.println(ar.contains(19));
+        ar.remove(9);
+        ar.inOrder();
     }
 }

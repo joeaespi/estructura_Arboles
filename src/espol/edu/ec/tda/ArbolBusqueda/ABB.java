@@ -93,7 +93,7 @@ public class ABB<E> {
         if(p.getLeft()==null){
             return p.getData();
         }else{
-            return max(p.getLeft());
+            return min(p.getLeft());
         }
     }
     
@@ -131,5 +131,32 @@ public class ABB<E> {
             System.out.print(p.getData()+" ");
             inOrder(p.getRight());
         }
+    }
+    
+    public boolean remove ( E data){
+        if(this.isEmpty()||data==null){
+            return false;
+        }else{
+            this.root= remove(data,this.root);
+            return true;
+        }
+    }
+    
+    private Node<E> remove(E data, Node<E> p){
+        if(p==null){
+            return p;
+        }else if (f.compare(data, p.getData())>0){
+            p.setRight(remove(data,p.getRight()));
+        }else if (f.compare(data, p.getData())<0){
+            p.setLeft(remove(data,p.getLeft()));
+        }else {
+            if(p.getLeft()!=null && p.getRight()!=null){
+                p.setData(min(p.getRight()));
+                p.setRight(remove(p.getData(),p.getRight()));
+            }else {
+                p=(p.getLeft()!=null)? p.getLeft(): p.getRight();
+            }
+        }
+        return p;
     }
 }
