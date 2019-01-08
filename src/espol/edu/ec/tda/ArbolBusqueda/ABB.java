@@ -159,4 +159,19 @@ public class ABB<E> {
         }
         return p;
     }
+    
+    public boolean isfull(){
+        return isFull(root);
+    }
+    
+    private boolean isFull(Node<E> p){
+        if(p == null){
+            return true;
+        }else if(p.getLeft()!= null && p.getRight()== null ||
+                p.getLeft() == null && p.getRight()!= null){
+            return false;
+        }else {
+            return (isFull(p.getLeft()) && isFull(p.getRight()));
+        }
+    }
 }

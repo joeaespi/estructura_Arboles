@@ -184,5 +184,36 @@ public class AB<E> {
         this.root = root;
     }
     
+     public boolean isLleno(){
+        return isLleno(root);
+    }
+    
+    private boolean isLleno(Node<E> p){
+        if(p == null){
+            return true;
+        }else if(p.getLeft()!= null && p.getRight()== null ||
+                p.getLeft() == null && p.getRight()!= null){
+            return false;
+        }else {
+            return (isLleno(p.getLeft()) && isLleno(p.getRight()))
+                    && (height(p.getLeft())==height(p.getRight()));
+        }
+    }
+    
+    public boolean esCompleto(){
+        return isCompleto(root);
+    }
+    
+    private boolean isCompleto(Node<E> p){
+        if(p == null){
+            return true;
+        }else if((p.getLeft()!= null && p.getRight()== null) ||
+                (p.getLeft() == null && p.getRight()!= null) && height(p)<height(root)){
+            return false;
+        }else {
+            return (isCompleto(p.getLeft()) && isCompleto(p.getRight()))
+                    && (height(p.getLeft())==height(p.getRight()));
+        }
+    }
     
 }
