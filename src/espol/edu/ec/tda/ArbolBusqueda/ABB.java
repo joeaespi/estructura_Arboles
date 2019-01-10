@@ -15,6 +15,7 @@ public class ABB<E> {
     private Node<E> root;
     private Comparator<E> f;
     
+   
     public ABB(Comparator<E> f){
         this.f=f;
         this.root = null;
@@ -160,18 +161,41 @@ public class ABB<E> {
         return p;
     }
     
-    public boolean isfull(){
-        return isFull(root);
+    public ABB<E> mirror(){
+        ABB<E> m = new ABB(f);
+        m.root = mirror(this.root);
+        return m;
     }
     
-    private boolean isFull(Node<E> p){
-        if(p == null){
+    private Node<E> mirror(Node<E> p){
+        if(p.getRight() == null && p.getLeft() == null){
+            return p;
+        }else {
+            Node<E> l = p.getLeft();
+            p.setLeft(mirror(p.getRight()));
+            p.setRight(mirror(l));
+            return p;
+        }
+    }
+    
+    public boolean equals(Object o){
+        if(o == null || this == null){
+            return false;
+        }else if (!(o instanceof ABB)){
+            return false;
+        }
+        ABB<E> t = (ABB<E>)o;
+        return equals(this.root,t.root) && 
+                    f.compare(this.root.getData(), t.root.getData())==0;
+    }
+    
+    private boolean equals(Node<E> e1, Node<E> e2){
+        if(e1 == null || e2 == null){
             return true;
-        }else if(p.getLeft()!= null && p.getRight()== null ||
-                p.getLeft() == null && p.getRight()!= null){
+        }if (!(e1.getData().equals(e2.getData()))){
             return false;
         }else {
-            return (isFull(p.getLeft()) && isFull(p.getRight()));
+            return equals(e1.getLeft(),e2.getLeft()) && equals(e1.getRight(), e2.getRight());
         }
     }
 }
