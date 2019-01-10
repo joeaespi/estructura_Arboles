@@ -19,6 +19,14 @@ public class Main {
         ar.add(5);
         ar.add(3);
         ar.add(1);
+        ABB<Integer> arr = new ABB<>(Integer::compareTo);
+        arr.add(8);
+        arr.add(19);
+        arr.add(9);
+        arr.add(7);
+        arr.add(5);
+        arr.add(3);
+        arr.add(1);
 //        ar.inOrder();
 //        System.out.print("\n");
 //        System.out.println(ar.max());
@@ -27,7 +35,30 @@ public class Main {
 //        System.out.println(ar.contains(19));
         ar.inOrder(); 
         System.out.print("\n");
-        ar.remove(9);
-        ar.inOrder();
+        ABB<Integer> ar2 = new ABB<>(Integer::compareTo);
+//        ar2.add(8);
+//        ar2.add(18);
+//        ar2.add(9);
+//        ar2.add(7);
+//        ar2.add(5);
+//        ar2.add(3);
+//        ar2.add(1);
+//        ar.remove(9);
+//        ar.inOrder();
+        ar2.add(9);
+        ar2.add(20);
+        ar2.add(10);
+        ar2.add(8);
+        ar2.add(6);
+        ar2.add(4);
+        ar2.add(2);
+        ar2.inOrder(); 
+        System.out.print("\n");
+        System.out.println(ar.equals(ar2));
+        ABB<Integer> ar3 = ar.mirror();
+        ar3.inOrder(); 
+        System.out.print("\n");
+
+        System.out.println(ar3.equals(arr));
     }
 }

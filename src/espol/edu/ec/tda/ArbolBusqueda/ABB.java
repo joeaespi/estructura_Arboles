@@ -162,13 +162,14 @@ public class ABB<E> {
     }
     
     public ABB<E> mirror(){
-        ABB<E> m = new ABB(f);
-        m.root = mirror(this.root);
-        return m;
+        ABB<E> arbol = new ABB(f);
+        arbol.root= mirror(this.root);
+        return arbol;
     }
     
     private Node<E> mirror(Node<E> p){
-        if(p.getRight() == null && p.getLeft() == null){
+        if(p.getRight() == null && p.getLeft() == null|| p.getLeft()!= null && p.getRight()== null
+                || p.getLeft()== null && p.getRight()!= null){
             return p;
         }else {
             Node<E> l = p.getLeft();
@@ -185,6 +186,8 @@ public class ABB<E> {
             return false;
         }
         ABB<E> t = (ABB<E>)o;
+        if(t.isEmpty()||this.isEmpty())
+            return false;
         return equals(this.root,t.root) && 
                     f.compare(this.root.getData(), t.root.getData())==0;
     }
@@ -192,7 +195,7 @@ public class ABB<E> {
     private boolean equals(Node<E> e1, Node<E> e2){
         if(e1 == null || e2 == null){
             return true;
-        }if (!(e1.getData().equals(e2.getData()))){
+        }else if (!(e1.getData().equals(e2.getData()))){
             return false;
         }else {
             return equals(e1.getLeft(),e2.getLeft()) && equals(e1.getRight(), e2.getRight());
