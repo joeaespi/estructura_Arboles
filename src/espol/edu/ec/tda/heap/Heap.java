@@ -46,4 +46,6 @@ public class Heap<E> {
     private int posPadre(int index){
         return ((index-1)/2!=0)?(index-1)/2:-1;
     }
+    
+    
 }
